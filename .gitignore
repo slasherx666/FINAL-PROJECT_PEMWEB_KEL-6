@@ -1,0 +1,9 @@
+# API Keys & Secrets
+.env
+.env.*
+*.key
+*.pem
+
+# File sampah sistem operasi
+.DS_Store
+Thumbs.db

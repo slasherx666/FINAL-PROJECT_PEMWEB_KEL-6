@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MyBudgetGue - Dashboard Mobile</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sunglow: {
+              50: '#fffdf5',
+              100: '#fffbeb',
+              200: '#fef3c7',
+              300: '#fde68a',
+              400: '#ffc72c',
+              500: '#ffb703',
+              600: '#f59e0b',
+              700: '#d97706',
+              800: '#92400e',
+              900: '#78350f'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet (Sunglow & Radiant White Palette) -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen selection:bg-amber-200">
+
+  <!-- ================= MOBILE APP FRAME CONTAINER ================= -->
+  <div class="max-w-md mx-auto min-h-screen bg-white shadow-2xl relative flex flex-col pb-24 border-x border-slate-200/60">
+    
+    <!-- ================= 1. TOP MOBILE HEADER ================= -->
+    <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md px-4 py-3.5 border-b border-slate-100 flex items-center justify-between shadow-2xs">
+      <div class="flex items-center gap-2.5">
+        <!-- Hamburger Menu Button (Drawer tertutup saat pertama kali di-run) -->
+        <button id="hamburgerMenuBtn" type="button" class="p-2 rounded-xl text-slate-600 hover:bg-slate-100 active:scale-95 transition-all cursor-pointer" aria-label="Buka Menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Brand Title -->
+        <div class="flex items-center gap-2">
+          <img src="assets/img/logo.svg" alt="Logo" class="w-7 h-7 drop-shadow-2xs">
+          <span class="font-extrabold text-base tracking-tight text-slate-900">My<span class="text-amber-500">Budget</span>Gue</span>
+        </div>
+      </div>
+
+      <!-- Quick Points Pill Badge -->
+      <a href="profil.html" class="flex items-center gap-1.5 bg-amber-50 border border-amber-200/80 px-2.5 py-1 rounded-full text-xs font-bold text-amber-800 shadow-2xs">
+        <span>🏆</span>
+        <span id="dashUserPoin">0 poin</span>
+      </a>
+    </header>
+
+    <!-- ================= 2. MAIN CONTENT ================= -->
+    <main class="flex-1 px-4 py-4 space-y-4">
+      
+      <!-- User Greeting Header -->
+      <section class="flex items-center justify-between pt-1">
+        <div>
+          <h1 class="text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Halo, <span id="dashUsername">Dorasaki</span>!
+          </h1>
+          <p id="dashCurrentDate" class="text-xs text-slate-400 font-medium mt-0.5">
+            Sabtu, 14 November 2026
+          </p>
+        </div>
+      </section>
+
+      <!-- CARD 1: STREAK HARIAN -->
+      <section class="card-sunglow rounded-2xl p-4 bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-white border border-amber-200/70 shadow-xs flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-300 flex items-center justify-center text-2xl flame-anim shadow-2xs">
+          🔥
+        </div>
+        <div class="flex-1">
+          <span class="text-[10px] uppercase font-extrabold tracking-wider text-amber-800 block">Streak Harian</span>
+          <strong id="dashStreakCount" class="text-base font-extrabold text-slate-900">0 hari</strong>
+          <p class="text-[11px] text-slate-500 font-medium">Catat transaksi hari ini untuk mulai streak!</p>
+        </div>
+      </section>
+
+      <!-- ROW 2: 2 ACTION CARDS SEJAJAR (Catat via Suara & Catat Manual) -->
+      <section class="grid grid-cols-2 gap-3">
+        <!-- Catat via Suara -->
+        <a href="tambah-transaksi.html?voice=1" class="card-sunglow rounded-2xl p-3.5 flex flex-col justify-between border border-amber-200/60 hover:border-amber-400 active:scale-95 transition-all shadow-xs group">
+          <div class="w-9 h-9 rounded-xl bg-amber-500 text-slate-900 flex items-center justify-center text-base mb-2 group-hover:scale-105 transition-transform shadow-2xs">
+            🎙️
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-900">Catat via Suara</h4>
+            <p class="text-[10px] text-slate-500 mt-0.5">Bicara, langsung tercatat</p>
+          </div>
+        </a>
+
+        <!-- Catat Manual -->
+        <a href="tambah-transaksi.html" class="card-sunglow rounded-2xl p-3.5 flex flex-col justify-between border border-slate-200/80 hover:border-amber-400 active:scale-95 transition-all shadow-xs group">
+          <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-base mb-2 group-hover:scale-105 transition-transform shadow-2xs">
+            ✏️
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-900">Catat Manual</h4>
+            <p class="text-[10px] text-slate-500 mt-0.5">Isi form transaksi</p>
+          </div>
+        </a>
+      </section>
+
+      <!-- ROW 3: 3 KOTAK RINGKASAN SEJAJAR (Total Saldo, Pemasukan, Pengeluaran) -->
+      <section class="grid grid-cols-3 gap-2.5">
+        <!-- Total Saldo -->
+        <div class="card-sunglow rounded-2xl p-3 flex flex-col justify-between border border-slate-200/70 shadow-2xs">
+          <div class="flex items-center gap-1 text-[10px] font-bold text-slate-500">
+            <span>💳</span>
+            <span class="truncate">Total Saldo</span>
+          </div>
+          <strong id="dashTotalSaldo" class="text-xs sm:text-sm font-extrabold text-slate-900 mt-2 truncate">Rp 0</strong>
+        </div>
+
+        <!-- Pemasukan Bulan Ini -->
+        <div class="card-sunglow rounded-2xl p-3 flex flex-col justify-between border border-emerald-100 bg-emerald-50/20 shadow-2xs">
+          <div class="flex items-center gap-1 text-[10px] font-bold text-emerald-700">
+            <span>📈</span>
+            <span class="truncate">Pemasukan</span>
+          </div>
+          <strong id="dashPemasukanBulanIni" class="text-xs sm:text-sm font-extrabold text-emerald-700 mt-2 truncate">Rp 0</strong>
+        </div>
+
+        <!-- Pengeluaran Bulan Ini -->
+        <div class="card-sunglow rounded-2xl p-3 flex flex-col justify-between border border-rose-100 bg-rose-50/20 shadow-2xs">
+          <div class="flex items-center gap-1 text-[10px] font-bold text-rose-700">
+            <span>📉</span>
+            <span class="truncate">Pengeluaran</span>
+          </div>
+          <strong id="dashPengeluaranBulanIni" class="text-xs sm:text-sm font-extrabold text-rose-700 mt-2 truncate">Rp 0</strong>
+        </div>
+      </section>
+
+      <!-- ROW 4: 2 BUDGET CARDS SEJAJAR (Budget Harian & Budget Bulanan) -->
+      <section class="grid grid-cols-2 gap-3">
+        <!-- Budget Harian -->
+        <a href="pengaturan.html" class="card-sunglow rounded-2xl p-3.5 border border-slate-200/80 hover:border-amber-300 transition-all shadow-xs block">
+          <span class="text-[11px] font-bold text-slate-600 block">Budget Harian</span>
+          <p id="dashBudgetHarian" class="text-xs font-extrabold text-amber-700 mt-1 truncate">
+            + Atur batas harian
+          </p>
+        </a>
+
+        <!-- Budget Bulanan -->
+        <a href="pengaturan.html" class="card-sunglow rounded-2xl p-3.5 border border-slate-200/80 hover:border-amber-300 transition-all shadow-xs block">
+          <span class="text-[11px] font-bold text-slate-600 block">Budget Bulanan</span>
+          <p id="dashBudgetBulanan" class="text-xs font-extrabold text-amber-700 mt-1 truncate">
+            + Atur batas bulanan
+          </p>
+        </a>
+      </section>
+
+      <!-- ROW 5: TRANSAKSI TERBARU -->
+      <section class="card-sunglow rounded-2xl p-4 border border-slate-200/80 shadow-xs space-y-3">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+          <h3 class="text-xs font-extrabold text-slate-900 tracking-tight">Transaksi Terbaru</h3>
+          <a href="transaksi.html" class="text-[11px] font-bold text-amber-700 hover:text-amber-800 flex items-center gap-0.5">
+            Lihat Semua &rsaquo;
+          </a>
+        </div>
+
+        <!-- Dynamic List Transaksi Terbaru -->
+        <div id="dashRecentTransactionsList">
+          <!-- Diisi via app.js -->
+        </div>
+      </section>
+
+      <!-- BOTTOM BUTTON: + Catat Transaksi Baru -->
+      <div class="pt-2">
+        <a href="tambah-transaksi.html" class="w-full btn-sunglow py-3 rounded-2xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer active:scale-98 transition-all">
+          <span class="text-base">+</span> Catat Transaksi Baru
+        </a>
+      </div>
+
+    </main>
+
+    <!-- ================= 3. MOBILE SLIDE-OUT DRAWER (TERTUTUP SAAT RUN) ================= -->
+    <div id="mobileSidebarOverlay" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+    <aside id="mobileSidebarDrawer" class="fixed top-0 left-0 bottom-0 w-72 bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-5 border-r border-slate-100">
+      
+      <!-- Drawer Top: Brand & User Card -->
+      <div class="space-y-5">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2.5">
+            <img src="assets/img/logo.svg" alt="Logo" class="w-8 h-8">
+            <div>
+              <h2 class="font-extrabold text-base text-slate-900 leading-tight">My<span class="text-amber-500">Budget</span>Gue</h2>
+              <p class="text-[10px] text-slate-400 font-medium">Kelola uang, raih target</p>
+            </div>
+          </div>
+          <button id="closeSidebarDrawerBtn" type="button" class="p-1 rounded-lg text-slate-400 hover:text-slate-800 cursor-pointer">
+            ✕
+          </button>
+        </div>
+
+        <!-- User Mini Profile Card -->
+        <div class="bg-amber-50/80 rounded-2xl p-3.5 border border-amber-200/80">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-400 font-extrabold text-amber-950 flex items-center justify-center text-sm shadow-2xs">
+              D
+            </div>
+            <div>
+              <h4 class="font-bold text-xs text-slate-900">Dorasaki</h4>
+              <div class="flex items-center gap-2 text-[10px] text-amber-800 font-semibold mt-0.5">
+                <span>🔥 0 hari</span>
+                <span>•</span>
+                <span>⭐ 0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Menu Links -->
+        <nav class="space-y-1.5 text-xs font-bold text-slate-600">
+          <a href="dashboard.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-amber-100 text-amber-900 shadow-2xs">
+            <span>⊞</span> Dashboard
+          </a>
+          <a href="transaksi.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors">
+            <span>📄</span> Transaksi
+          </a>
+          <a href="profil.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors">
+            <span>👤</span> Profil
+          </a>
+          <a href="pengaturan.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors">
+            <span>⚙️</span> Pengaturan
+          </a>
+        </nav>
+      </div>
+
+      <!-- Drawer Bottom: Keluar -->
+      <div class="pt-4 border-t border-slate-100">
+        <a href="auth.html" class="flex items-center gap-2 text-xs font-bold text-rose-600 hover:text-rose-700 p-2 rounded-xl hover:bg-rose-50 transition-colors">
+          <span>🚪</span> Keluar Akun
+        </a>
+      </div>
+    </aside>
+
+    <!-- ================= 4. FIXED MOBILE BOTTOM NAVIGATION BAR ================= -->
+    <nav class="fixed bottom-0 left-1/2 transform -translate-x-1/2 max-w-md w-full bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-6 py-2.5 z-40 flex items-center justify-between shadow-lg">
+      <a href="dashboard.html" class="flex flex-col items-center gap-0.5 text-amber-600 font-bold text-[10px]">
+        <span class="text-lg">⊞</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="transaksi.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
+        <span class="text-lg">📄</span>
+        <span>Transaksi</span>
+      </a>
+      <a href="profil.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
+        <span class="text-lg">👤</span>
+        <span>Profil</span>
+      </a>
+      <a href="pengaturan.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
+        <span class="text-lg">⚙️</span>
+        <span>Pengaturan</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- Core App Logic -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

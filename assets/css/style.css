@@ -1,0 +1,232 @@
+/* ==========================================================================
+   MyBudgetGue - Custom Stylesheet (Sunglow & Radiant White Palette)
+   ========================================================================== */
+
+:root {
+  /* Sunglow & White Gradient Theme */
+  --color-sunglow: #ffb703;           /* Radiant Golden Sunglow */
+  --color-sunglow-deep: #f59e0b;      /* Deep Warm Amber */
+  --color-sunglow-hover: #d97706;     /* Rich Amber for Hover */
+  --color-sunglow-light: #fffbeb;     /* Warm Sunny Tint */
+  --color-bg-base: #fbfbfd;           /* Modern Light Canvas */
+  --color-card-bg: #ffffff;           /* Crisp Pure White */
+  --color-border: #f1f5f9;            /* Soft Slate Border */
+  --color-border-glow: rgba(255, 183, 3, 0.35); /* Sunglow Border Glow */
+  --color-text-main: #0f172a;         /* Deep Rich Navy/Slate */
+  --color-text-muted: #64748b;        /* Elegant Muted Slate */
+  --color-status-safe: #10b981;       /* Emerald Safe */
+  --color-status-warn: #f59e0b;       /* Amber Warning */
+  --color-status-danger: #ef4444;     /* Rose Coral Danger */
+}
+
+/* Base Body with Subtle Sunglow Aurora Gradient */
+body {
+  background: radial-gradient(circle at 10% 10%, rgba(255, 183, 3, 0.12) 0%, transparent 40%),
+              radial-gradient(circle at 90% 85%, rgba(255, 199, 44, 0.10) 0%, transparent 45%),
+              linear-gradient(180deg, #ffffff 0%, #fffdf8 35%, #f8fafc 100%);
+  background-attachment: fixed;
+  color: var(--color-text-main);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbar for Sunglow Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sunglow-deep);
+}
+
+/* Glassmorphism & Sunglow Shadow Elevation */
+.card-sunglow {
+  background: linear-gradient(145deg, #ffffff 0%, #fffefb 100%);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 20px -2px rgba(255, 183, 3, 0.08), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-sunglow:hover {
+  border-color: rgba(255, 183, 3, 0.45);
+  box-shadow: 0 12px 28px -4px rgba(255, 183, 3, 0.18), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+}
+
+/* Sunglow Gradient Buttons */
+.btn-sunglow {
+  background: linear-gradient(135deg, #ffb703 0%, #f59e0b 100%);
+  color: #0f172a;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-sunglow:hover {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-sunglow:active {
+  transform: scale(0.98);
+}
+
+.btn-sunglow-outline {
+  background: #ffffff;
+  color: #d97706;
+  border: 1px solid #fed7aa;
+  transition: all 0.2s ease;
+}
+
+.btn-sunglow-outline:hover {
+  background: #fffbeb;
+  border-color: #f59e0b;
+}
+
+/* Table Customization for Light Theme */
+.table-sunglow-row {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.15s ease;
+}
+
+.table-sunglow-row:hover {
+  background-color: #fffdf5;
+}
+
+/* Status Indicator Badges (Light & High Contrast) */
+.badge-status-safe {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.badge-status-warning {
+  background-color: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.badge-status-danger {
+  background-color: #fff1f2;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
+
+/* Pulse Animation for Status Dot */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.status-pulse-dot {
+  animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth Focus Outlines */
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffb703, 0 0 0 4px rgba(255, 183, 3, 0.25);
+}
+
+/* Voice Recognition (Web Speech API) Styles & Animations */
+@keyframes micRippleLight {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+    transform: scale(1.06);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    transform: scale(1);
+  }
+}
+
+.mic-recording-pulse {
+  animation: micRippleLight 1.6s infinite ease-out;
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+}
+
+/* Audio Wave Visualizer Bars */
+@keyframes soundWaveLight {
+  0%, 100% { height: 6px; }
+  50% { height: 26px; }
+}
+
+.wave-bar {
+  width: 4px;
+  background-color: #f59e0b;
+  border-radius: 9999px;
+  animation: soundWaveLight 1.2s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0.1s; }
+.wave-bar:nth-child(2) { animation-delay: 0.25s; }
+.wave-bar:nth-child(3) { animation-delay: 0.4s; }
+.wave-bar:nth-child(4) { animation-delay: 0.15s; }
+.wave-bar:nth-child(5) { animation-delay: 0.3s; }
+
+/* Gamification: Daily Streak & Virtual Badges */
+@keyframes flameFlicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.15) rotate(2deg); filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.6)); }
+}
+
+.flame-anim {
+  animation: flameFlicker 1.8s ease-in-out infinite;
+}
+
+.badge-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.badge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px -4px rgba(255, 183, 3, 0.22);
+}
+
+.badge-unlocked {
+  background: linear-gradient(145deg, #ffffff 0%, #fffdf4 100%);
+  border: 1px solid #fde68a;
+  box-shadow: 0 4px 12px rgba(255, 183, 3, 0.10);
+}
+
+.badge-locked {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  opacity: 0.55;
+  filter: grayscale(85%);
+}
+
+.badge-locked:hover {
+  opacity: 0.8;
+  filter: grayscale(40%);
+}
+
+/* Modal Transition Effect */
+.modal-backdrop {
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+}

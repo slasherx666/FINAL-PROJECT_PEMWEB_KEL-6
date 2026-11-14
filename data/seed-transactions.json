@@ -1,0 +1,50 @@
+[
+  {
+    "id": "tx-1",
+    "tipe": "pemasukan",
+    "kategori": "Gaji",
+    "nominal": 7500000,
+    "tanggal": "2026-11-01",
+    "keterangan": "Gaji Pokok & Tunjangan Bulanan"
+  },
+  {
+    "id": "tx-2",
+    "tipe": "pengeluaran",
+    "kategori": "Kebutuhan Rumah",
+    "nominal": 1200000,
+    "tanggal": "2026-11-03",
+    "keterangan": "Belanja Sembako & Kebutuhan Dapur"
+  },
+  {
+    "id": "tx-3",
+    "tipe": "pengeluaran",
+    "kategori": "Tagihan",
+    "nominal": 450000,
+    "tanggal": "2026-11-05",
+    "keterangan": "Tagihan Listrik PLN & PDAM"
+  },
+  {
+    "id": "tx-4",
+    "tipe": "pemasukan",
+    "kategori": "Freelance",
+    "nominal": 1800000,
+    "tanggal": "2026-11-08",
+    "keterangan": "Proyek Desain Web Klien"
+  },
+  {
+    "id": "tx-5",
+    "tipe": "pengeluaran",
+    "kategori": "Makanan & Minuman",
+    "nominal": 350000,
+    "tanggal": "2026-11-10",
+    "keterangan": "Makan bersama keluarga di akhir pekan"
+  },
+  {
+    "id": "tx-6",
+    "tipe": "pengeluaran",
+    "kategori": "Transportasi",
+    "nominal": 250000,
+    "tanggal": "2026-11-12",
+    "keterangan": "Pengisian Bahan Bakar Kendaraan"
+  }
+]

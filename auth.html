@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MyBudgetGue - Masuk & Daftar Akun</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sunglow: {
+              50: '#fffdf5',
+              100: '#fffbeb',
+              200: '#fef3c7',
+              300: '#fde68a',
+              400: '#ffc72c',
+              500: '#ffb703',
+              600: '#f59e0b',
+              700: '#d97706',
+              800: '#92400e',
+              900: '#78350f'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex items-center justify-center p-4 selection:bg-amber-200">
+
+  <div class="max-w-md w-full space-y-6">
+    
+    <!-- BRAND LOGO & TITLE (SESUAI REFERENSI DESAIN) -->
+    <div class="flex flex-col items-center text-center space-y-2">
+      <div class="w-16 h-16 rounded-3xl btn-sunglow flex items-center justify-center text-3xl shadow-lg">
+        💼
+      </div>
+      <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+        My<span class="text-amber-500">Budget</span>Gue
+      </h1>
+      <p class="text-xs text-slate-500 font-medium">Kelola uang, raih target.</p>
+    </div>
+
+    <!-- AUTH CARD (MASUK / DAFTAR TABS) -->
+    <div class="card-sunglow rounded-3xl p-6 sm:p-7 shadow-xl border border-slate-200/80 space-y-5 bg-white">
+      
+      <!-- Tabs: Masuk | Daftar -->
+      <div class="flex bg-slate-100 p-1 rounded-2xl text-xs font-bold text-slate-500">
+        <button id="tabMasuk" type="button" onclick="switchAuthMode('login')" class="flex-1 py-2.5 rounded-xl bg-white text-slate-900 shadow-2xs font-extrabold transition-all cursor-pointer">
+          Masuk
+        </button>
+        <button id="tabDaftar" type="button" onclick="switchAuthMode('register')" class="flex-1 py-2.5 rounded-xl hover:text-slate-900 transition-all cursor-pointer">
+          Daftar
+        </button>
+      </div>
+
+      <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+        
+        <!-- Field Nama Lengkap (Hanya saat mode Daftar) -->
+        <div id="fieldNamaLengkap" class="space-y-1.5 hidden">
+          <label for="authNama" class="block text-xs font-bold text-slate-700">Nama Lengkap</label>
+          <input 
+            type="text" 
+            id="authNama" 
+            placeholder="contoh: Dorasaki"
+            class="w-full px-4 py-3 rounded-2xl bg-white border border-slate-200 text-xs font-semibold text-slate-900 placeholder-slate-400 focus:border-amber-400 shadow-2xs"
+          >
+        </div>
+
+        <!-- Field Username -->
+        <div class="space-y-1.5">
+          <label for="authUsername" class="block text-xs font-bold text-slate-700">Username</label>
+          <input 
+            type="text" 
+            id="authUsername" 
+            required 
+            placeholder="contoh: budgetku"
+            value="Dorasaki"
+            class="w-full px-4 py-3 rounded-2xl bg-white border border-slate-200 text-xs font-semibold text-slate-900 placeholder-slate-400 focus:border-amber-400 shadow-2xs"
+          >
+        </div>
+
+        <!-- Field Password -->
+        <div class="space-y-1.5">
+          <label for="authPassword" class="block text-xs font-bold text-slate-700">Password</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="authPassword" 
+              required 
+              minlength="6"
+              placeholder="min. 6 karakter"
+              value="123456"
+              class="w-full pl-4 pr-10 py-3 rounded-2xl bg-white border border-slate-200 text-xs font-semibold text-slate-900 placeholder-slate-400 focus:border-amber-400 shadow-2xs"
+            >
+            <button 
+              type="button" 
+              onclick="togglePasswordVisibility()" 
+              class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 cursor-pointer"
+            >
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            id="btnAuthSubmit"
+            class="w-full btn-sunglow py-3.5 rounded-2xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer active:scale-98 transition-all"
+          >
+            Masuk Sekarang
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- FOOTER TOGGLE LINK -->
+    <div class="text-center text-xs text-slate-500">
+      <span id="authFooterText">Belum punya akun?</span>
+      <button id="authFooterLink" onclick="toggleAuthModeFooter()" class="font-bold text-amber-700 hover:underline ml-1 cursor-pointer">
+        Daftar
+      </button>
+    </div>
+
+  </div>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    let currentAuthMode = 'login';
+
+    function switchAuthMode(mode) {
+      currentAuthMode = mode;
+      const tabMasuk = document.getElementById('tabMasuk');
+      const tabDaftar = document.getElementById('tabDaftar');
+      const fieldNama = document.getElementById('fieldNamaLengkap');
+      const btnSubmit = document.getElementById('btnAuthSubmit');
+      const footerText = document.getElementById('authFooterText');
+      const footerLink = document.getElementById('authFooterLink');
+
+      if (mode === 'login') {
+        tabMasuk.className = 'flex-1 py-2.5 rounded-xl bg-white text-slate-900 shadow-2xs font-extrabold transition-all cursor-pointer';
+        tabDaftar.className = 'flex-1 py-2.5 rounded-xl hover:text-slate-900 transition-all cursor-pointer text-slate-500';
+        fieldNama.classList.add('hidden');
+        btnSubmit.textContent = 'Masuk Sekarang';
+        footerText.textContent = 'Belum punya akun?';
+        footerLink.textContent = 'Daftar';
+      } else {
+        tabDaftar.className = 'flex-1 py-2.5 rounded-xl bg-white text-slate-900 shadow-2xs font-extrabold transition-all cursor-pointer';
+        tabMasuk.className = 'flex-1 py-2.5 rounded-xl hover:text-slate-900 transition-all cursor-pointer text-slate-500';
+        fieldNama.classList.remove('hidden');
+        btnSubmit.textContent = 'Daftar Sekarang';
+        footerText.textContent = 'Sudah punya akun?';
+        footerLink.textContent = 'Masuk';
+      }
+    }
+
+    function toggleAuthModeFooter() {
+      switchAuthMode(currentAuthMode === 'login' ? 'register' : 'login');
+    }
+
+    function togglePasswordVisibility() {
+      const pwd = document.getElementById('authPassword');
+      if (pwd) pwd.type = pwd.type === 'password' ? 'text' : 'password';
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const usernameInput = document.getElementById('authUsername');
+      const namaInput = document.getElementById('authNama');
+
+      const profile = getUserProfile();
+      if (usernameInput && usernameInput.value) {
+        profile.username = usernameInput.value.trim();
+      }
+      if (namaInput && namaInput.value) {
+        profile.namaLengkap = namaInput.value.trim();
+      }
+      saveUserProfile(profile);
+
+      showToast(currentAuthMode === 'login' ? 'Berhasil masuk ke akun!' : 'Akun berhasil dibuat!', 'success');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 700);
+    }
+  </script>
+</body>
+</html>
