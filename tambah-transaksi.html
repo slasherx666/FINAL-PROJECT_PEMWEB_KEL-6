@@ -62,6 +62,19 @@
     <!-- ================= MAIN CONTENT ================= -->
     <main class="flex-1 px-4 py-4 space-y-4">
       
+      <!-- FITUR 1: SHORTCUT TRANSAKSI MIKRO -->
+      <section class="space-y-1.5">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-extrabold text-slate-700 flex items-center gap-1">
+            <span>⚡</span> Shortcut Transaksi Mikro
+          </span>
+          <span class="text-[10px] text-slate-400 font-medium">Catat langsung 1-klik</span>
+        </div>
+        <div id="formMicroShortcutsList" class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
       <!-- TOP CARD: CATAT DENGAN SUARA (WEB SPEECH API) SESUAI DESAIN -->
       <section class="card-sunglow rounded-2xl p-4 border border-amber-200/80 bg-gradient-to-br from-amber-50/60 via-white to-amber-50/30 shadow-xs space-y-3">
         <div class="flex items-center justify-between">
@@ -92,9 +105,9 @@
 
         <!-- Preset Chips Simulasi Suara Cepat -->
         <div class="flex flex-wrap gap-1.5 pt-1">
-          <button type="button" onclick="applyVoiceToForm('Makan siang 35 ribu')" class="text-[10px] bg-white border border-slate-200 hover:border-amber-300 px-2 py-0.5 rounded-lg text-slate-600">"Makan siang 35 rb"</button>
-          <button type="button" onclick="applyVoiceToForm('Beli bensin pertamax 50 ribu')" class="text-[10px] bg-white border border-slate-200 hover:border-amber-300 px-2 py-0.5 rounded-lg text-slate-600">"Bensin 50 rb"</button>
-          <button type="button" onclick="applyVoiceToForm('Pemasukan freelance 1.5 juta')" class="text-[10px] bg-white border border-slate-200 hover:border-amber-300 px-2 py-0.5 rounded-lg text-slate-600">"Freelance 1.5 jt"</button>
+          <button type="button" onclick="applyVoiceToForm('Makan siang 35 ribu')" class="text-[10px] bg-white border border-slate-200 hover:border-amber-300 px-2 py-0.5 rounded-lg text-slate-600 cursor-pointer">"Makan siang 35 rb"</button>
+          <button type="button" onclick="applyVoiceToForm('Beli bensin pertamax 50 ribu')" class="text-[10px] bg-white border border-slate-200 hover:border-amber-300 px-2 py-0.5 rounded-lg text-slate-600 cursor-pointer">"Bensin 50 rb"</button>
+          <button type="button" onclick="applyVoiceToForm('Pemasukan freelance 1.5 juta')" class="text-[10px] bg-white border border-slate-200 hover:border-amber-300 px-2 py-0.5 rounded-lg text-slate-600 cursor-pointer">"Freelance 1.5 jt"</button>
         </div>
       </section>
 
@@ -131,11 +144,11 @@
           </div>
         </div>
 
-        <!-- KATEGORI (GRID 8 ICON SESUAI REFERENSI DESAIN) -->
+        <!-- KATEGORI (GRID 8 ICON) -->
         <div class="space-y-2">
           <label class="block text-xs font-bold text-slate-700">Kategori</label>
           <div id="categoryIconGrid" class="grid grid-cols-4 gap-2">
-            <!-- Diisi dinamis oleh app.js (default 8 kategori pengeluaran) -->
+            <!-- Diisi dinamis oleh app.js -->
           </div>
         </div>
 
@@ -187,21 +200,25 @@
     </main>
 
     <!-- ================= FIXED BOTTOM NAVIGATION BAR ================= -->
-    <nav class="fixed bottom-0 left-1/2 transform -translate-x-1/2 max-w-md w-full bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-6 py-2.5 z-40 flex items-center justify-between shadow-lg">
+    <nav class="fixed bottom-0 left-1/2 transform -translate-x-1/2 max-w-md w-full bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-4 py-2.5 z-40 flex items-center justify-between shadow-lg">
       <a href="dashboard.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
-        <span class="text-lg">⊞</span>
+        <span class="text-base">⊞</span>
         <span>Dashboard</span>
       </a>
       <a href="transaksi.html" class="flex flex-col items-center gap-0.5 text-amber-600 font-bold text-[10px]">
-        <span class="text-lg">📄</span>
+        <span class="text-base">📄</span>
         <span>Transaksi</span>
       </a>
+      <a href="analitik.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
+        <span class="text-base">📊</span>
+        <span>Analitik</span>
+      </a>
       <a href="profil.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
-        <span class="text-lg">👤</span>
+        <span class="text-base">👤</span>
         <span>Profil</span>
       </a>
       <a href="pengaturan.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
-        <span class="text-lg">⚙️</span>
+        <span class="text-base">⚙️</span>
         <span>Pengaturan</span>
       </a>
     </nav>

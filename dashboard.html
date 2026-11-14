@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Custom Stylesheet (Sunglow & Radiant White Palette) -->
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen selection:bg-amber-200">
@@ -83,7 +83,7 @@
         </div>
       </section>
 
-      <!-- CARD 1: STREAK HARIAN -->
+      <!-- FITUR 4: CARD STREAK HARIAN (GAMIFIKASI) -->
       <section class="card-sunglow rounded-2xl p-4 bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-white border border-amber-200/70 shadow-xs flex items-center gap-3.5">
         <div class="w-12 h-12 rounded-2xl bg-amber-100 border border-amber-300 flex items-center justify-center text-2xl flame-anim shadow-2xs">
           🔥
@@ -95,7 +95,26 @@
         </div>
       </section>
 
-      <!-- ROW 2: 2 ACTION CARDS SEJAJAR (Catat via Suara & Catat Manual) -->
+      <!-- FITUR 2: SISTEM PERINGATAN VISUAL BATAS PENGELUARAN (HIJAU, KUNING, MERAH) -->
+      <section id="visualBudgetWarningBanner">
+        <!-- Rendered otomatis via app.js berdasarkan persentase limit -->
+      </section>
+
+      <!-- FITUR 1: SHORTCUT TRANSAKSI MIKRO (PENCATATAN INSTAN 1-KLIK) -->
+      <section class="space-y-1.5">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-extrabold text-slate-700 flex items-center gap-1">
+            <span>⚡</span> Shortcut Transaksi Mikro
+          </span>
+          <span class="text-[10px] text-slate-400 font-medium">Klik untuk catat instan</span>
+        </div>
+        <!-- Horizontal Scrollable Container -->
+        <div id="dashMicroShortcutsList" class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- 2 ACTION CARDS SEJAJAR (Catat via Suara & Catat Manual) -->
       <section class="grid grid-cols-2 gap-3">
         <!-- Catat via Suara -->
         <a href="tambah-transaksi.html?voice=1" class="card-sunglow rounded-2xl p-3.5 flex flex-col justify-between border border-amber-200/60 hover:border-amber-400 active:scale-95 transition-all shadow-xs group">
@@ -120,9 +139,8 @@
         </a>
       </section>
 
-      <!-- ROW 3: 3 KOTAK RINGKASAN SEJAJAR (Total Saldo, Pemasukan, Pengeluaran) -->
+      <!-- 3 KOTAK RINGKASAN SEJAJAR (Total Saldo, Pemasukan, Pengeluaran) -->
       <section class="grid grid-cols-3 gap-2.5">
-        <!-- Total Saldo -->
         <div class="card-sunglow rounded-2xl p-3 flex flex-col justify-between border border-slate-200/70 shadow-2xs">
           <div class="flex items-center gap-1 text-[10px] font-bold text-slate-500">
             <span>💳</span>
@@ -131,7 +149,6 @@
           <strong id="dashTotalSaldo" class="text-xs sm:text-sm font-extrabold text-slate-900 mt-2 truncate">Rp 0</strong>
         </div>
 
-        <!-- Pemasukan Bulan Ini -->
         <div class="card-sunglow rounded-2xl p-3 flex flex-col justify-between border border-emerald-100 bg-emerald-50/20 shadow-2xs">
           <div class="flex items-center gap-1 text-[10px] font-bold text-emerald-700">
             <span>📈</span>
@@ -140,7 +157,6 @@
           <strong id="dashPemasukanBulanIni" class="text-xs sm:text-sm font-extrabold text-emerald-700 mt-2 truncate">Rp 0</strong>
         </div>
 
-        <!-- Pengeluaran Bulan Ini -->
         <div class="card-sunglow rounded-2xl p-3 flex flex-col justify-between border border-rose-100 bg-rose-50/20 shadow-2xs">
           <div class="flex items-center gap-1 text-[10px] font-bold text-rose-700">
             <span>📉</span>
@@ -150,9 +166,8 @@
         </div>
       </section>
 
-      <!-- ROW 4: 2 BUDGET CARDS SEJAJAR (Budget Harian & Budget Bulanan) -->
+      <!-- 2 BUDGET CARDS SEJAJAR (Budget Harian & Budget Bulanan) -->
       <section class="grid grid-cols-2 gap-3">
-        <!-- Budget Harian -->
         <a href="pengaturan.html" class="card-sunglow rounded-2xl p-3.5 border border-slate-200/80 hover:border-amber-300 transition-all shadow-xs block">
           <span class="text-[11px] font-bold text-slate-600 block">Budget Harian</span>
           <p id="dashBudgetHarian" class="text-xs font-extrabold text-amber-700 mt-1 truncate">
@@ -160,7 +175,6 @@
           </p>
         </a>
 
-        <!-- Budget Bulanan -->
         <a href="pengaturan.html" class="card-sunglow rounded-2xl p-3.5 border border-slate-200/80 hover:border-amber-300 transition-all shadow-xs block">
           <span class="text-[11px] font-bold text-slate-600 block">Budget Bulanan</span>
           <p id="dashBudgetBulanan" class="text-xs font-extrabold text-amber-700 mt-1 truncate">
@@ -169,7 +183,12 @@
         </a>
       </section>
 
-      <!-- ROW 5: TRANSAKSI TERBARU -->
+      <!-- FITUR 3: LAPORAN ANALITIK OTOMATIS WIDGET (MINGGUAN / BULANAN) -->
+      <section id="dashAnalyticsWidget" class="card-sunglow rounded-2xl p-4 border border-slate-200/80 shadow-xs space-y-3">
+        <!-- Rendered via JS -->
+      </section>
+
+      <!-- TRANSAKSI TERBARU -->
       <section class="card-sunglow rounded-2xl p-4 border border-slate-200/80 shadow-xs space-y-3">
         <div class="flex items-center justify-between pb-2 border-b border-slate-100">
           <h3 class="text-xs font-extrabold text-slate-900 tracking-tight">Transaksi Terbaru</h3>
@@ -178,7 +197,6 @@
           </a>
         </div>
 
-        <!-- Dynamic List Transaksi Terbaru -->
         <div id="dashRecentTransactionsList">
           <!-- Diisi via app.js -->
         </div>
@@ -197,7 +215,6 @@
     <div id="mobileSidebarOverlay" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 hidden transition-opacity"></div>
     <aside id="mobileSidebarDrawer" class="fixed top-0 left-0 bottom-0 w-72 bg-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-5 border-r border-slate-100">
       
-      <!-- Drawer Top: Brand & User Card -->
       <div class="space-y-5">
         <div class="flex items-center justify-between pb-4 border-b border-slate-100">
           <div class="flex items-center gap-2.5">
@@ -212,7 +229,6 @@
           </button>
         </div>
 
-        <!-- User Mini Profile Card -->
         <div class="bg-amber-50/80 rounded-2xl p-3.5 border border-amber-200/80">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-amber-400 font-extrabold text-amber-950 flex items-center justify-center text-sm shadow-2xs">
@@ -229,13 +245,15 @@
           </div>
         </div>
 
-        <!-- Navigation Menu Links -->
         <nav class="space-y-1.5 text-xs font-bold text-slate-600">
           <a href="dashboard.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-amber-100 text-amber-900 shadow-2xs">
             <span>⊞</span> Dashboard
           </a>
           <a href="transaksi.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors">
             <span>📄</span> Transaksi
+          </a>
+          <a href="analitik.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors">
+            <span>📊</span> Analitik Otomatis
           </a>
           <a href="profil.html" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors">
             <span>👤</span> Profil
@@ -246,7 +264,6 @@
         </nav>
       </div>
 
-      <!-- Drawer Bottom: Keluar -->
       <div class="pt-4 border-t border-slate-100">
         <a href="auth.html" class="flex items-center gap-2 text-xs font-bold text-rose-600 hover:text-rose-700 p-2 rounded-xl hover:bg-rose-50 transition-colors">
           <span>🚪</span> Keluar Akun
@@ -255,28 +272,31 @@
     </aside>
 
     <!-- ================= 4. FIXED MOBILE BOTTOM NAVIGATION BAR ================= -->
-    <nav class="fixed bottom-0 left-1/2 transform -translate-x-1/2 max-w-md w-full bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-6 py-2.5 z-40 flex items-center justify-between shadow-lg">
+    <nav class="fixed bottom-0 left-1/2 transform -translate-x-1/2 max-w-md w-full bg-white/95 backdrop-blur-md border-t border-slate-200/80 px-4 py-2.5 z-40 flex items-center justify-between shadow-lg">
       <a href="dashboard.html" class="flex flex-col items-center gap-0.5 text-amber-600 font-bold text-[10px]">
-        <span class="text-lg">⊞</span>
+        <span class="text-base">⊞</span>
         <span>Dashboard</span>
       </a>
       <a href="transaksi.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
-        <span class="text-lg">📄</span>
+        <span class="text-base">📄</span>
         <span>Transaksi</span>
       </a>
+      <a href="analitik.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
+        <span class="text-base">📊</span>
+        <span>Analitik</span>
+      </a>
       <a href="profil.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
-        <span class="text-lg">👤</span>
+        <span class="text-base">👤</span>
         <span>Profil</span>
       </a>
       <a href="pengaturan.html" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-slate-800 font-semibold text-[10px]">
-        <span class="text-lg">⚙️</span>
+        <span class="text-base">⚙️</span>
         <span>Pengaturan</span>
       </a>
     </nav>
 
   </div>
 
-  <!-- Core App Logic -->
   <script src="assets/js/app.js"></script>
 </body>
 </html>
